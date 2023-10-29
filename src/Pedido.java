@@ -22,6 +22,19 @@ public class Pedido {
 
     int quantidade = InputReader.getInt("Informe a quantidade: ");
 
+    if (quantidade <= 0) {
+      System.out.println("\nQuantidade invalida!");
+
+      return;
+    }
+
+    if (produto.getQuantidadeEstoque() < quantidade) {
+      System.out.printf("\nNao foi possivel adicionar %d %s! Estoque atual: %d.\n",
+          quantidade, produto.getNome(), produto.getQuantidadeEstoque());
+
+      return;
+    }
+
     boolean sucesso = adicionarItem(produto, quantidade);
 
     if (sucesso)
