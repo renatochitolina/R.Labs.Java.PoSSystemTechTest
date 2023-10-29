@@ -1,5 +1,6 @@
 package utils;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class InputReader {
@@ -9,18 +10,45 @@ public class InputReader {
     if (mensagem != null)
       System.out.print(mensagem);
 
-    return scan.nextLine();
+    try {
+      return scan.nextLine();
+    } catch (InputMismatchException e) {
+      limparSobrasBuffer();
+    }
+
+    return null;
   }
 
   public static int getInt(String mensagem) {
     if (mensagem != null)
       System.out.print(mensagem);
 
-    int resultado = scan.nextInt();
+    try {
+      int resultado = scan.nextInt();
 
-    limparSobrasBuffer();
+      return resultado;
+    } catch (InputMismatchException e) {
+    } finally {
+      limparSobrasBuffer();
+    }
 
-    return resultado;
+    return -1;
+  }
+
+  public static double getDouble(String mensagem) {
+    if (mensagem != null)
+      System.out.print(mensagem);
+
+    try {
+      double resultado = scan.nextDouble();
+
+      return resultado;
+    } catch (InputMismatchException e) {
+    } finally {
+      limparSobrasBuffer();
+    }
+
+    return -1;
   }
 
   public static void finalizar() {

@@ -16,8 +16,11 @@ public class Menu {
       case 3:
         Pedido.imprimirPedido();
         break;
+      case 4:
+        Pedido.pagar();
+        break;
       default:
-        System.out.println("OPCAO INVALIDA!!!");
+        System.out.println("\nOPCAO INVALIDA!");
     }
 
     return false;
@@ -30,6 +33,7 @@ public class Menu {
     System.out.println("--- 1 MOSTRAR CATALOGO --");
     System.out.println("--- 2 LANCAR ITEM -------");
     System.out.println("--- 3 VER PEDIDO --------");
+    System.out.println("--- 4 PAGAR PEDIDO ------");
     System.out.println("--- 0 ENCERRAR ----------");
     System.out.println("-------------------------\n");
   }

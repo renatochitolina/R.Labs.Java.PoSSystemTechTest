@@ -76,7 +76,7 @@ public class Estoque {
 
     for (Produto produto : getListaProdutos()) {
       System.out.printf(
-          "| %-4d | %-16s | R$%-8.2f | %-12d| \n",
+          "| %-4d | %-16s | R$%-8.2f | %-11d |\n",
           produto.getId(),
           produto.getNome(),
           produto.getPreco(),

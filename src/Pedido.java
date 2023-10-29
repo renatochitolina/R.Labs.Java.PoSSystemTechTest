@@ -12,6 +12,12 @@ public class Pedido {
   public static void adicionarItem() {
     String nome = InputReader.getString("\nInforme o nome do produto: ");
 
+    if (nome == null) {
+      System.out.println("\nNome invalido!");
+
+      return;
+    }
+
     Produto produto = Estoque.encontrarProduto(nome);
 
     if (produto == null) {
@@ -57,7 +63,7 @@ public class Pedido {
     } else {
       for (PedidoItem itemPedido : listaItens) {
         System.out.printf(
-            "| %-4d | %-16s | R$%-10.2f | %-13d | R$%-10.2f|\n",
+            "| %-4d | %-16s | R$%-10.2f | %-13d | R$%-9.2f |\n",
             itemPedido.getProduto().getId(),
             itemPedido.getProduto().getNome(),
             itemPedido.getProduto().getPreco(),
@@ -80,6 +86,30 @@ public class Pedido {
     return valorTotal;
   }
 
+  public static void pagar() {
+    imprimirPedido();
+
+    double valorTotal = getValorTotal();
+
+    if (valorTotal <= 0) {
+      System.out.println("\nO pedido nao possui itens para ser pago!");
+
+      return;
+    }
+
+    boolean pago = Caixa.pagar(valorTotal);
+
+    if (!pago) {
+      System.out.println("\nO pedido nao foi pago! Efetue pagamento novamente.");
+
+      return;
+    }
+
+    System.out.println("\nPedido pago com sucesso!");
+
+    Pedido.limparListaItens();
+  }
+
   private static boolean adicionarItem(Produto produto, int quantidade) {
     for (PedidoItem itemPedido : getListaItens()) {
       if (itemPedido.getProduto().getNome().equalsIgnoreCase(produto.getNome())) {
@@ -96,5 +126,9 @@ public class Pedido {
     Estoque.baixarEstoque(produto.getId(), quantidade);
 
     return true;
+  }
+
+  private static void limparListaItens() {
+    itens.clear();
   }
 }
