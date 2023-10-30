@@ -62,6 +62,8 @@ java -cp "bin" App
 
 Os operadores do Sistema PoS têm reportado que quando lançam uma venda para o cliente retirar mais tarde, quando o cliente chega para pegar os produtos, identifica-se que *não existem mais produtos em estoque*, e olhando o sistema, o *estoque está negativo*. É necessária uma investigação detalhada para correção do comportamento defeituoso.
 
+> ✅ **Resolvido** através do [commit bbfbde8cd4458741a4000de7fc4d1e460577fe83](../../commit/bbfbde8cd4458741a4000de7fc4d1e460577fe83)
+
 ### 2. Feature Request
 
 #### História de Usuário (US - User Story):
@@ -89,3 +91,5 @@ Cálculo de troco detalhado
 - Sistema fornece a combinação *mais otimizada possível* de cédulas e moedas para o troco
 - A interface do usuário exibe o valor do troco de maneira clara e detalhada
 - O sistema está em conformidade com os critérios de aceitação definidos
+
+> ✅ **Resolvido** através do [commit b274503faf4749175b65b41e1aadc940cc96dff4](../../commit/b274503faf4749175b65b41e1aadc940cc96dff4)
